@@ -33,3 +33,19 @@ export const deleteProduct = async (id) => {
         console.error("Erro ao deletar produto:", error);
     }
 };
+
+export const updateProduct = async (id, updatedProduct) => {
+    try {
+        const response = await fetch(`${apiUrl}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedProduct)
+        });
+        return await response.json();
+    } catch (error) {
+        console.error("Erro ao atualizar produto:", error);
+    }
+};
+
